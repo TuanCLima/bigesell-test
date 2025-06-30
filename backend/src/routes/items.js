@@ -5,9 +5,19 @@ const router = express.Router();
 const DATA_PATH = path.join(__dirname, '../../../data/items.json');
 
 // Utility to read data (intentionally sync to highlight blocking issue)
-function readData() {
-  const raw = fs.readFileSync(DATA_PATH);
-  return JSON.parse(raw);
+async function readData() {
+  try {
+    const raw = await fs.promises.readFile(DATA_PATH, "utf8");
+    try {
+      return JSON.parse(raw);
+    } catch (parseErr) {
+      console.error("Error parsing JSON:", parseErr);
+      throw parseErr;
+    }
+  } catch (err) {
+    console.error("Error reading file:", err);
+    throw err;
+  }
 }
 
 // GET /api/items
