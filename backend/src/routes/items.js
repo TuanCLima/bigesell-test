@@ -21,9 +21,9 @@ async function readData() {
 }
 
 // GET /api/items
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
-    const data = readData();
+    const data = await readData();
     const { limit, q } = req.query;
     let results = data;
 
