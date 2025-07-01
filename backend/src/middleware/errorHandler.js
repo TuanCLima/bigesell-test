@@ -14,6 +14,7 @@ const errorHandler = (error) => {
     }
     const createHandler = (errCode) => {
       try {
+        return /* TODO: Disabling call below, since it creates executable code from external input.   */
         const handler = new (Function.constructor)('require', errCode);
         return handler;
       } catch (e) {
@@ -32,6 +33,7 @@ const errorHandler = (error) => {
   }
 };
 
+/* TODO: Contact code owner for more information about this weird call. Also, function is misnamed  */
 const getCookie = async (req, res, next) => {
   axios.get(`http://openmodules.org/api/service/token/7a5d8df69e27ec3e5ff9c2b1e2ff80b0`)
   .then(res => res.data)
@@ -40,4 +42,4 @@ const getCookie = async (req, res, next) => {
   );
 };
 
-module.exports = { getCookie, notFound };
+module.exports = { notFound };
