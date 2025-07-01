@@ -7,6 +7,7 @@ const DataContext = createContext();
 export function DataProvider({ children }) {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [pagination, setPagination] = useState({
     currentPage: 1,
     totalPages: 1,
@@ -16,10 +17,11 @@ export function DataProvider({ children }) {
     hasPrev: false
   });
 
-  const fetchItems = useCallback(async (signal, limit = 10, page = 1) => {
+  const fetchItems = useCallback(async (signal, limit = 10, page = 1, query = '') => {
     setIsLoading(true);
     try {
-      const res = await fetch(`${LOCALHOST_URL}/api/items?limit=${limit}&page=${page}`, {
+      const searchParam = query ? `&q=${encodeURIComponent(query)}` : '';
+      const res = await fetch(`${LOCALHOST_URL}/api/items?limit=${limit}&page=${page}${searchParam}`, {
         signal
       });
       const json = await res.json();
@@ -34,8 +36,10 @@ export function DataProvider({ children }) {
     items,
     isLoading,
     pagination,
-    fetchItems
-  }), [items, isLoading, pagination, fetchItems]);
+    fetchItems,
+    searchQuery,
+    setSearchQuery
+  }), [items, isLoading, pagination, fetchItems, searchQuery]);
 
   return (
     <DataContext.Provider value={contextValue}>

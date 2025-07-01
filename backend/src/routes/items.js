@@ -46,8 +46,11 @@ router.get('/', async (req, res, next) => {
     let results = data;
 
     if (q) {
-      // Simple substring search (sub‑optimal)
-      results = results.filter(item => item.name.toLowerCase().includes(q.toLowerCase()));
+      results = results.filter(item => {
+        const searchTerm = q.toLowerCase();
+        return item.name.toLowerCase().includes(searchTerm) ||
+               item.category.toLowerCase().includes(searchTerm);
+            });
     }
 
     const totalItems = results.length;
