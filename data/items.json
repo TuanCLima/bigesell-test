@@ -1,27 +1,158 @@
 [
-  { "id": 1, "name": "Laptop Pro", "category": "Electronics", "price": 2499 },
-  { "id": 2, "name": "Noise Cancelling Headphones", "category": "Electronics", "price": 399 },
-  { "id": 3, "name": "Ultra‑Wide Monitor", "category": "Electronics", "price": 999 },
-  { "id": 4, "name": "Ergonomic Chair", "category": "Furniture", "price": 799 },
-  { "id": 5, "name": "Standing Desk", "category": "Furniture", "price": 1199 },
-  { "id": 6, "name": "Wireless Mouse", "category": "Electronics", "price": 79 },
-  { "id": 7, "name": "Mechanical Keyboard", "category": "Electronics", "price": 149 },
-  { "id": 8, "name": "USB-C Hub", "category": "Electronics", "price": 89 },
-  { "id": 9, "name": "Webcam HD", "category": "Electronics", "price": 129 },
-  { "id": 10, "name": "Desk Lamp", "category": "Furniture", "price": 59 },
-  { "id": 11, "name": "Office Bookshelf", "category": "Furniture", "price": 299 },
-  { "id": 12, "name": "Bluetooth Speaker", "category": "Electronics", "price": 199 },
-  { "id": 13, "name": "External Hard Drive", "category": "Electronics", "price": 119 },
-  { "id": 14, "name": "Coffee Table", "category": "Furniture", "price": 349 },
-  { "id": 15, "name": "Table Runner", "category": "Home Decor", "price": 29 },
-  { "id": 16, "name": "Wall Art Print", "category": "Home Decor", "price": 45 },
-  { "id": 17, "name": "Plant Pot", "category": "Home Decor", "price": 25 },
-  { "id": 18, "name": "Throw Pillow", "category": "Home Decor", "price": 35 },
-  { "id": 19, "name": "Desk Organizer", "category": "Office Supplies", "price": 39 },
-  { "id": 20, "name": "Notebook Set", "category": "Office Supplies", "price": 19 },
-  { "id": 21, "name": "Pen Holder", "category": "Office Supplies", "price": 15 },
-  { "id": 22, "name": "Whiteboard", "category": "Office Supplies", "price": 89 },
-  { "id": 23, "name": "Tablet Stand", "category": "Electronics", "price": 49 },
-  { "id": 24, "name": "Phone Charger", "category": "Electronics", "price": 29 },
-  { "id": 25, "name": "Reading Chair", "category": "Furniture", "price": 599 }
+  {
+    "id": 1,
+    "name": "Laptop Pro",
+    "category": "Electronics",
+    "price": 2499
+  },
+  {
+    "id": 2,
+    "name": "Noise Cancelling Headphones",
+    "category": "Electronics",
+    "price": 399
+  },
+  {
+    "id": 3,
+    "name": "Ultra‑Wide Monitor",
+    "category": "Electronics",
+    "price": 999
+  },
+  {
+    "id": 4,
+    "name": "Ergonomic Chair",
+    "category": "Furniture",
+    "price": 799
+  },
+  {
+    "id": 5,
+    "name": "Standing Desk",
+    "category": "Furniture",
+    "price": 1199
+  },
+  {
+    "id": 6,
+    "name": "Wireless Mouse",
+    "category": "Electronics",
+    "price": 79
+  },
+  {
+    "id": 7,
+    "name": "Mechanical Keyboard",
+    "category": "Electronics",
+    "price": 149
+  },
+  {
+    "id": 8,
+    "name": "USB-C Hub",
+    "category": "Electronics",
+    "price": 89
+  },
+  {
+    "id": 9,
+    "name": "Webcam HD",
+    "category": "Electronics",
+    "price": 129
+  },
+  {
+    "id": 10,
+    "name": "Desk Lamp",
+    "category": "Furniture",
+    "price": 59
+  },
+  {
+    "id": 11,
+    "name": "Office Bookshelf",
+    "category": "Furniture",
+    "price": 299
+  },
+  {
+    "id": 12,
+    "name": "Bluetooth Speaker",
+    "category": "Electronics",
+    "price": 199
+  },
+  {
+    "id": 13,
+    "name": "External Hard Drive",
+    "category": "Electronics",
+    "price": 119
+  },
+  {
+    "id": 14,
+    "name": "Coffee Table",
+    "category": "Furniture",
+    "price": 349
+  },
+  {
+    "id": 15,
+    "name": "Table Runner",
+    "category": "Home Decor",
+    "price": 29
+  },
+  {
+    "id": 16,
+    "name": "Wall Art Print",
+    "category": "Home Decor",
+    "price": 45
+  },
+  {
+    "id": 17,
+    "name": "Plant Pot",
+    "category": "Home Decor",
+    "price": 25
+  },
+  {
+    "id": 18,
+    "name": "Throw Pillow",
+    "category": "Home Decor",
+    "price": 35
+  },
+  {
+    "id": 19,
+    "name": "Desk Organizer",
+    "category": "Office Supplies",
+    "price": 39
+  },
+  {
+    "id": 20,
+    "name": "Notebook Set",
+    "category": "Office Supplies",
+    "price": 19
+  },
+  {
+    "id": 21,
+    "name": "Pen Holder",
+    "category": "Office Supplies",
+    "price": 15
+  },
+  {
+    "id": 22,
+    "name": "Whiteboard",
+    "category": "Office Supplies",
+    "price": 89
+  },
+  {
+    "id": 23,
+    "name": "Tablet Stand",
+    "category": "Electronics",
+    "price": 49
+  },
+  {
+    "id": 24,
+    "name": "Phone Charger",
+    "category": "Electronics",
+    "price": 29
+  },
+  {
+    "id": 25,
+    "name": "Reading Chair",
+    "category": "Furniture",
+    "price": 599
+  },
+  {
+    "id": 26,
+    "name": "Computer",
+    "category": "electronics",
+    "price": 10
+  }
 ]

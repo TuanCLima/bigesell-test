@@ -3,6 +3,24 @@ const fs = require('fs');
 const path = require('path');
 const router = express.Router();
 const DATA_PATH = path.join(__dirname, '../../../data/items.json');
+const STATS_PATH = path.join(__dirname, '../../../data/stats.json');
+
+async function updateStats(item) {
+  try {
+    const statsRaw = await fs.promises.readFile(STATS_PATH, 'utf8');
+    let stats = JSON.parse(statsRaw);
+
+    // Update total count and average price
+    stats.total += 1;
+    stats.averagePrice = ((stats.averagePrice * (stats.total - 1)) + item.price) / stats.total;
+
+    // Write updated stats back to file
+    await fs.promises.writeFile(STATS_PATH, JSON.stringify(stats, null, 2));
+  } catch (err) {
+    console.error("Error updating stats:", err);
+    throw err;
+  }
+}
 
 // Utility to read data (intentionally sync to highlight blocking issue)
 async function readData() {
@@ -74,17 +92,47 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // POST /api/items
-router.post('/', (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    // TODO: Validate payload (intentional omission)
+    // Validate payload
+    if (!req.body || typeof req.body !== 'object') {
+      const err = new Error('Request body must be a valid JSON object');
+      err.status = 400;
+      throw err;
+    }
+
+    const { name, category, price } = req.body;
+
+    if (!name || typeof name !== 'string' || name.trim() === '') {
+      const err = new Error('Name is required and must be a non-empty string');
+      err.status = 400;
+      throw err;
+    }
+
+    if (!category || typeof category !== 'string' || category.trim() === '') {
+      const err = new Error('Category is required and must be a non-empty string');
+      err.status = 400;
+      throw err;
+    }
+
+    if (price === undefined || price === null || typeof price !== 'number' || price < 0) {
+      const err = new Error('Price is required and must be a non-negative number');
+      err.status = 400;
+      throw err;
+    }
+
     const item = req.body;
-    const data = readData();
+    const data = await readData();
     item.id = Date.now();
     data.push(item);
-    fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2));
+
+    // Calculate and save new average price and total count
+    await updateStats(item)
+  
+    await fs.promises.writeFile(DATA_PATH, JSON.stringify(data, null, 2));
     res.status(201).json(item);
   } catch (err) {
-    next(err);
+    next(err);  
   }
 });
 
