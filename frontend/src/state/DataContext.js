@@ -1,5 +1,7 @@
 import React, { createContext, useCallback, useContext, useState, useMemo } from 'react';
 
+export const LOCALHOST_URL = 'http://localhost:3001';
+
 const DataContext = createContext();
 
 export function DataProvider({ children }) {
@@ -17,7 +19,7 @@ export function DataProvider({ children }) {
   const fetchItems = useCallback(async (signal, limit = 10, page = 1) => {
     setIsLoading(true);
     try {
-      const res = await fetch(`http://localhost:3001/api/items?limit=${limit}&page=${page}`, {
+      const res = await fetch(`${LOCALHOST_URL}/api/items?limit=${limit}&page=${page}`, {
         signal
       });
       const json = await res.json();
